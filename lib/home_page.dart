@@ -47,30 +47,21 @@ class _HomePageState extends State<HomePage> {
         title: Text("Futures"),
       ),
       body: FutureBuilder(
-        future: getProducts(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          // print(snapshot.connectionState);
-          // print(snapshot.hasData);
-          // print(snapshot.data);
-          if (snapshot.hasData) {
-
-           List<String> products = snapshot.data;
-
+        future: dataFuture.getDataList(),
+        builder: (BuildContext context, AsyncSnapshot snap){
+          if(snap.hasData){
+            List<Map<String, dynamic>> people = snap.data;
             return ListView.builder(
-              itemCount: products.length,
+              itemCount: people.length,
               itemBuilder: (BuildContext context, int index){
                 return ListTile(
-                  title: Text(products[index]),
+                  title: Text(people[index]["fullName"]),
+                  subtitle: Text(people[index]["address"]),
                 );
               },
             );
-
           }
-
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-
+          return Center(child: CircularProgressIndicator(),);
         },
       ),
     );

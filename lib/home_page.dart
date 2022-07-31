@@ -6,11 +6,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   String text = "Hola";
 
-  Future<String> getName() async{
-    return "Fiorella de Fátima Gonzales";
+  @override
+  initState() {
+    super.initState();
+    getData();
+    // getName().then((value){
+    //   text = value;
+    //   setState((){});
+    // });
+  }
+
+  getData() async{
+    text = await getName();
+    setState((){});
+  }
+
+  Future<String> getName() async {
+    return Future.delayed(Duration(seconds: 3), (){
+      return "Ramón";
+    });
   }
 
   @override
@@ -25,23 +41,19 @@ class _HomePageState extends State<HomePage> {
           children: [
             Text(
               text,
-              style: TextStyle(
-                fontSize: 30.0
-              ),
+              style: TextStyle(fontSize: 30.0),
             ),
             const SizedBox(
               height: 12.0,
             ),
             ElevatedButton(
               onPressed: () async {
-
                 // getName().then((value){
                 //   text = value;
                 //   setState((){});
                 // });
                 text = await getName();
-                setState((){});
-
+                setState(() {});
               },
               child: Text(
                 "Mostrar",

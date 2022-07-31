@@ -35,11 +35,18 @@ class _GeneralPageState extends State<GeneralPage> {
       ),
       body: Column(
         children: [
+          const SizedBox(
+            height: 20.0,
+          ),
           const Text(
             "Gestionar datos",
             style: TextStyle(
               color: Colors.white,
+              fontSize: 20.0
             ),
+          ),
+          const SizedBox(
+            height: 12.0,
           ),
 
           Container(
@@ -66,7 +73,7 @@ class _GeneralPageState extends State<GeneralPage> {
             margin: EdgeInsets.symmetric(horizontal: 14.0, vertical: 8.0),
             child: TextField(
               decoration: InputDecoration(
-                hintText: "Nombre completo",
+                hintText: "Dirección",
                 filled: true,
                 fillColor: Colors.white,
                 contentPadding:

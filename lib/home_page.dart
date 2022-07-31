@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
         builder: (BuildContext context, AsyncSnapshot snapshot){
           print(snapshot.connectionState);
           print(snapshot.hasData);
-          return Text("Hola wwwww");
+          return Text("Hola wwww");
         },
       ),
     );

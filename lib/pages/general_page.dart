@@ -35,11 +35,57 @@ class _GeneralPageState extends State<GeneralPage> {
       ),
       body: Column(
         children: [
-          Expanded(
-            child: Container(
-              color: Colors.redAccent,
+          const Text(
+            "Gestionar datos",
+            style: TextStyle(
+              color: Colors.white,
             ),
           ),
+
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 14.0, vertical: 8.0),
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: "Nombre completo",
+                filled: true,
+                fillColor: Colors.white,
+                contentPadding:
+                    EdgeInsets.symmetric(vertical: 10, horizontal: 12.0),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(14.0),
+                  borderSide: BorderSide.none,
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(14.0),
+                  borderSide: BorderSide.none,
+                ),
+              ),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 14.0, vertical: 8.0),
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: "Nombre completo",
+                filled: true,
+                fillColor: Colors.white,
+                contentPadding:
+                EdgeInsets.symmetric(vertical: 10, horizontal: 12.0),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(14.0),
+                  borderSide: BorderSide.none,
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(14.0),
+                  borderSide: BorderSide.none,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 20.0,
+          ),
+
           Expanded(
             child: Container(
               padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 14.0),

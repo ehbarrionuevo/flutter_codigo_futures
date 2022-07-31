@@ -14,6 +14,8 @@ class _GeneralPageState extends State<GeneralPage> {
 
   List<Map<String, dynamic>> people = [];
 
+  bool isLoading = true;
+
   @override
   initState() {
     super.initState();
@@ -23,6 +25,7 @@ class _GeneralPageState extends State<GeneralPage> {
   getData() {
     _dataFuture.getDataList().then((value) {
       people = value;
+      isLoading = false;
       setState(() {});
     });
   }
@@ -105,6 +108,9 @@ class _GeneralPageState extends State<GeneralPage> {
 
                 _dataFuture.addPerson(person);
 
+                isLoading = true;
+                setState((){});
+
                 getData();
 
               },
@@ -127,7 +133,7 @@ class _GeneralPageState extends State<GeneralPage> {
                   topRight: Radius.circular(34.0),
                 ),
               ),
-              child: people.isNotEmpty
+              child: !isLoading
                   ? ListView.builder(
                       physics: const BouncingScrollPhysics(),
                       itemCount: people.length,

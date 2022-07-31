@@ -7,7 +7,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
+  List<Map<String, dynamic>> people = [];
   DataFuture dataFuture = DataFuture();
 
   String text = "Hola";
@@ -22,9 +22,13 @@ class _HomePageState extends State<HomePage> {
     // });
   }
 
-  getData() async {
-    text = await getName();
-    setState(() {});
+  getData()  {
+    //text = await getName();
+    dataFuture.getDataList().then((value){
+      people = value;
+      setState(() {});
+    });
+
   }
 
   Future<String> getName() async {
@@ -41,29 +45,50 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text("Futures"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              setState((){});
+            },
+            icon: Icon(
+              Icons.update,
+            ),
+          ),
+        ],
       ),
-      body: FutureBuilder(
-        future: dataFuture.getDataList(),
-        builder: (BuildContext context, AsyncSnapshot snap){
-          if(snap.hasData){
-            List<Map<String, dynamic>> people = snap.data;
-            return ListView.builder(
-              itemCount: people.length,
-              itemBuilder: (BuildContext context, int index){
-                return ListTile(
-                  title: Text(people[index]["fullName"]),
-                  subtitle: Text(people[index]["address"]),
-                );
-              },
-            );
-          }
-          return Center(child: CircularProgressIndicator(),);
+      body: ListView.builder(
+        itemCount: people.length,
+        itemBuilder: (BuildContext context, int index){
+          return ListTile(
+            title: Text(people[index]["fullName"]),
+          );
         },
       ),
+
+      // body: FutureBuilder(
+      //   future: dataFuture.getDataList(),
+      //   builder: (BuildContext context, AsyncSnapshot snap) {
+      //     if (snap.hasData) {
+      //       List<Map<String, dynamic>> people = snap.data;
+      //       print("HOLAAAAAAAAAAAAAAAAAAAA");
+      //       return ListView.builder(
+      //         itemCount: people.length,
+      //         itemBuilder: (BuildContext context, int index) {
+      //           return ListTile(
+      //             title: Text(people[index]["fullName"]),
+      //             subtitle: Text(people[index]["address"]),
+      //           );
+      //         },
+      //       );
+      //     }
+      //     return Center(
+      //       child: CircularProgressIndicator(),
+      //     );
+      //   },
+      // ),
     );
   }
 }

@@ -47,6 +47,7 @@ class _GeneralPageState extends State<GeneralPage> {
                 itemBuilder: (BuildContext context, int index){
                   return ListTile(
                     title: Text(people[index]["fullName"]),
+                    subtitle: Text(people[index]["address"]),
                   );
                 },
               ),

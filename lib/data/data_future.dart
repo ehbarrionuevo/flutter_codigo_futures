@@ -10,6 +10,30 @@ class DataFuture{
       "fullName": "José Tapia",
       "address": "Cll. Gonzales Prada 4534",
     },
+    {
+      "fullName": "Fiorella Gonzales",
+      "address": "Av. Lima 23",
+    },
+    {
+      "fullName": "José Tapia",
+      "address": "Cll. Gonzales Prada 4534",
+    },
+    {
+      "fullName": "Fiorella Gonzales",
+      "address": "Av. Lima 23",
+    },
+    {
+      "fullName": "José Tapia",
+      "address": "Cll. Gonzales Prada 4534",
+    },
+    {
+      "fullName": "Fiorella Gonzales",
+      "address": "Av. Lima 23",
+    },
+    {
+      "fullName": "José Tapia",
+      "address": "Cll. Gonzales Prada 4534",
+    },
   ];
 
   Future<List<Map<String, dynamic>>> getDataList() async{

@@ -9,6 +9,9 @@ class GeneralPage extends StatefulWidget {
 class _GeneralPageState extends State<GeneralPage> {
   DataFuture _dataFuture = DataFuture();
 
+  final TextEditingController _fullNameController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
+
   List<Map<String, dynamic>> people = [];
 
   @override
@@ -49,6 +52,7 @@ class _GeneralPageState extends State<GeneralPage> {
           Container(
             margin: EdgeInsets.symmetric(horizontal: 14.0, vertical: 8.0),
             child: TextField(
+              controller: _fullNameController,
               decoration: InputDecoration(
                 hintText: "Nombre completo",
                 filled: true,
@@ -69,6 +73,7 @@ class _GeneralPageState extends State<GeneralPage> {
           Container(
             margin: EdgeInsets.symmetric(horizontal: 14.0, vertical: 8.0),
             child: TextField(
+              controller: _addressController,
               decoration: InputDecoration(
                 hintText: "Dirección",
                 filled: true,
@@ -91,7 +96,18 @@ class _GeneralPageState extends State<GeneralPage> {
             height: 50.0,
             width: double.infinity,
             child: ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: () {
+
+                Map<String, dynamic> person = {
+                  "fullName": _fullNameController.text,
+                  "address": _addressController.text,
+                };
+
+                _dataFuture.addPerson(person);
+
+                getData();
+
+              },
               icon: Icon(Icons.save),
               label: Text(
                 "Guardar",

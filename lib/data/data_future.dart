@@ -14,6 +14,10 @@ class DataFuture{
     });
   }
 
+  addPerson(Map<String, dynamic> person){
+    _dataList.add(person);
+  }
+
   // get infoList => _dataList;
 
 

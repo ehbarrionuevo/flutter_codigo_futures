@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_codigo_futures/data/data_future.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class GeneralPage extends StatefulWidget {
   @override
@@ -19,6 +20,7 @@ class _GeneralPageState extends State<GeneralPage> {
   @override
   initState() {
     super.initState();
+    getDataShared();
     getData();
   }
 
@@ -29,6 +31,20 @@ class _GeneralPageState extends State<GeneralPage> {
       setState(() {});
     });
   }
+
+  saveDataShared() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString("miClave1", "Fiorella Guadalupe");
+  }
+  
+  getDataShared() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    print(prefs.getString("miClave1"));
+  }
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -110,6 +126,8 @@ class _GeneralPageState extends State<GeneralPage> {
 
                 isLoading = true;
                 setState((){});
+
+                saveDataShared();
 
                 getData();
 

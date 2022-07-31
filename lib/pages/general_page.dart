@@ -29,6 +29,7 @@ class _GeneralPageState extends State<GeneralPage> {
     return Scaffold(
       backgroundColor: Color(0xff2d2d2d),
       appBar: AppBar(
+        backgroundColor: Color(0xff2d2d2d),
         title: Text(
           "Integrantes",
         ),
@@ -40,15 +41,11 @@ class _GeneralPageState extends State<GeneralPage> {
           ),
           const Text(
             "Gestionar datos",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20.0
-            ),
+            style: TextStyle(color: Colors.white, fontSize: 20.0),
           ),
           const SizedBox(
             height: 12.0,
           ),
-
           Container(
             margin: EdgeInsets.symmetric(horizontal: 14.0, vertical: 8.0),
             child: TextField(
@@ -77,7 +74,7 @@ class _GeneralPageState extends State<GeneralPage> {
                 filled: true,
                 fillColor: Colors.white,
                 contentPadding:
-                EdgeInsets.symmetric(vertical: 10, horizontal: 12.0),
+                    EdgeInsets.symmetric(vertical: 10, horizontal: 12.0),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(14.0),
                   borderSide: BorderSide.none,
@@ -89,10 +86,21 @@ class _GeneralPageState extends State<GeneralPage> {
               ),
             ),
           ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 14.0, vertical: 10.0),
+            height: 50.0,
+            width: double.infinity,
+            child: ElevatedButton.icon(
+              onPressed: () {},
+              icon: Icon(Icons.save),
+              label: Text(
+                "Guardar",
+              ),
+            ),
+          ),
           const SizedBox(
             height: 20.0,
           ),
-
           Expanded(
             child: Container(
               padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 14.0),

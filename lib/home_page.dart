@@ -29,38 +29,25 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  Future<List<String>> getProducts() async {
+    return Future.delayed(Duration(seconds: 3), (){
+      return ["Manzana", "Papaya", "Piña", "Fresa"];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Futures"),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              text,
-              style: TextStyle(fontSize: 30.0),
-            ),
-            const SizedBox(
-              height: 12.0,
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                // getName().then((value){
-                //   text = value;
-                //   setState((){});
-                // });
-                text = await getName();
-                setState(() {});
-              },
-              child: Text(
-                "Mostrar",
-              ),
-            ),
-          ],
-        ),
+      body: FutureBuilder(
+        future: getProducts(),
+        builder: (BuildContext context, AsyncSnapshot snapshot){
+          print(snapshot.connectionState);
+          print(snapshot.hasData);
+          return Text("Hola wwwww");
+        },
       ),
     );
   }

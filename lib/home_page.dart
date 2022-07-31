@@ -48,7 +48,18 @@ class _HomePageState extends State<HomePage> {
           // print(snapshot.hasData);
           // print(snapshot.data);
           if (snapshot.hasData) {
-            return Text(snapshot.data);
+
+           List<String> products = snapshot.data;
+
+            return ListView.builder(
+              itemCount: products.length,
+              itemBuilder: (BuildContext context, int index){
+                return ListTile(
+                  title: Text(products[index]),
+                );
+              },
+            );
+
           }
 
           return Center(

@@ -18,19 +18,19 @@ class _HomePageState extends State<HomePage> {
     // });
   }
 
-  getData() async{
+  getData() async {
     text = await getName();
-    setState((){});
+    setState(() {});
   }
 
   Future<String> getName() async {
-    return Future.delayed(Duration(seconds: 3), (){
+    return Future.delayed(Duration(seconds: 3), () {
       return "Ramón";
     });
   }
 
   Future<List<String>> getProducts() async {
-    return Future.delayed(Duration(seconds: 3), (){
+    return Future.delayed(Duration(seconds: 3), () {
       return ["Manzana", "Papaya", "Piña", "Fresa"];
     });
   }
@@ -43,10 +43,18 @@ class _HomePageState extends State<HomePage> {
       ),
       body: FutureBuilder(
         future: getProducts(),
-        builder: (BuildContext context, AsyncSnapshot snapshot){
-          print(snapshot.connectionState);
-          print(snapshot.hasData);
-          return Text("Hola wwww");
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          // print(snapshot.connectionState);
+          // print(snapshot.hasData);
+          // print(snapshot.data);
+          if (snapshot.hasData) {
+            return Text(snapshot.data);
+          }
+
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+
         },
       ),
     );

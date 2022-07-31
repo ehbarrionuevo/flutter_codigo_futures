@@ -111,23 +111,34 @@ class _GeneralPageState extends State<GeneralPage> {
                   topRight: Radius.circular(34.0),
                 ),
               ),
-              child: ListView.builder(
-                physics: const BouncingScrollPhysics(),
-                itemCount: people.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return ListTile(
-                    title: Text(people[index]["fullName"]),
-                    subtitle: Text(people[index]["address"]),
-                    // trailing: Row(
-                    //   mainAxisSize: MainAxisSize.min,
-                    //   children: [
-                    //     IconButton(onPressed: (){}, icon: Icon(Icons.edit),),
-                    //     ElevatedButton(onPressed: (){}, child: Text("Enviar"))
-                    //   ],
-                    // ),
-                  );
-                },
-              ),
+              child: people.isNotEmpty
+                  ? ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: people.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return ListTile(
+                          title: Text(people[index]["fullName"]),
+                          subtitle: Text(people[index]["address"]),
+                          // trailing: Row(
+                          //   mainAxisSize: MainAxisSize.min,
+                          //   children: [
+                          //     IconButton(onPressed: (){}, icon: Icon(Icons.edit),),
+                          //     ElevatedButton(onPressed: (){}, child: Text("Enviar"))
+                          //   ],
+                          // ),
+                        );
+                      },
+                    )
+                  : const Center(
+                      child: SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2.2,
+                          color: Colors.indigo,
+                        ),
+                      ),
+                    ),
             ),
           ),
         ],

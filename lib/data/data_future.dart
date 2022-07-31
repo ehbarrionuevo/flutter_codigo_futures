@@ -12,5 +12,13 @@ class DataFuture{
     },
   ];
 
+  Future<List<Map<String, dynamic>>> getDataList() async{
+    return Future.delayed(Duration(seconds: 2), (){
+      return _dataList;
+    });
+  }
+
+  // get infoList => _dataList;
+
 
 }

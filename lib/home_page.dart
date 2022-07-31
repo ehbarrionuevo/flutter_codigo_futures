@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_codigo_futures/data/data_future.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -6,6 +7,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  DataFuture dataFuture = DataFuture();
+
   String text = "Hola";
 
   @override
@@ -37,6 +41,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Futures"),
